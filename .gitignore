@@ -1,1 +1,3 @@
 .adea/
+.venv/
+.__pycache__/
