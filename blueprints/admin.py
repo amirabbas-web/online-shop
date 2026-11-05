@@ -1,7 +1,7 @@
 from flask import Blueprint
 
-admin = Blueprint("admin_blueprint", __name__)
+admin = Blueprint("admin_blueprint", __name__, url_prefix="/admin")
 
 @admin.route("/")
 def home():
-    return "this is main page"
+    return "this is admin page"
