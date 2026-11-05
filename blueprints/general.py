@@ -3,5 +3,9 @@ from flask import Blueprint
 general = Blueprint("general_blueprint", __name__)
 
 @general.route("/")
-def hello_world():
-    return "Hello World!"
+def home():
+    return "this is main page"
+
+@general.route("/about")
+def about():
+    return "about us"
