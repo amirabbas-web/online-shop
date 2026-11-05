@@ -4,9 +4,7 @@ from blueprints.general import general
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello_world():
-    return "Hello World!"
+
 
 app.register_blueprint(general)
 if __name__ == "__main__":
