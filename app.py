@@ -3,11 +3,10 @@ from config import *
 from blueprints.general import general
 from blueprints.admin import admin
 from blueprints.user import user
-from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
-db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+
 app.register_blueprint(user)
 app.register_blueprint(admin)
 app.register_blueprint(general)
@@ -17,4 +16,4 @@ with app.app_context():
     db.create_all()
 
 if __name__ == "__main__":
-    app.run(debug=True, port=PORT)
+    app.run(debug=DEBUG, port=PORT)
