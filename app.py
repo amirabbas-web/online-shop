@@ -1,5 +1,6 @@
 from flask import Flask
 from config import *
+from extensions import *
 from blueprints.general import general
 from blueprints.admin import admin
 from blueprints.user import user
