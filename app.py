@@ -7,6 +7,7 @@ from blueprints.user import user
 app = Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SECRET_KEY"] = SECRET_KEY
 
 app.register_blueprint(user)
 app.register_blueprint(admin)
