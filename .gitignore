@@ -1,5 +1,5 @@
 .adea/
-.venv/
+venv/
 __pycache__/
 *.py[cod]
 instance/*.db
