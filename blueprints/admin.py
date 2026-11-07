@@ -25,7 +25,7 @@ def login():
 
 @admin.route("/dashboard")
 def dashboard():
-    return "this is dashboard page"
+    return render_template("admin/dashboard.html")
 
 
 @admin.route("/dashboard/products")
