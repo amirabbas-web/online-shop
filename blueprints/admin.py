@@ -7,6 +7,7 @@ def before_request():
     if session.get("admin_login") == None and request.endpoint != "admin_blueprint.login":
         abort(403)
 
+
 @admin.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "GET":
@@ -21,16 +22,12 @@ def login():
         else:
             return redirect(url_for("admin_blueprint.login"))
 
+
 @admin.route("/dashboard")
 def dashboard():
-    if session.get("admin_login", None) == None:
-        abort(403)
-    else:
-        return "this is dashboard page"
+    return "this is dashboard page"
+
 
 @admin.route("/dashboard/products")
 def products():
-    if session.get("admin_login", None) == None:
-        abort(403)
-    else:
-        return "this is products page"
+    return "this is products page"
