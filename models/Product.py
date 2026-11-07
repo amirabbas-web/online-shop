@@ -7,6 +7,8 @@ class Product(db.Model):
     name = Column(String(50), nullable=False)
     description = Column(String(200), nullable=False)
     price = Column(Integer, nullable=False)
+    active = Column(Integer, nullable=False)
     __table_args__ = (
         PrimaryKeyConstraint(id, name="pk_id"),
+        Index("ix_all", name, description, price, active)
     )
