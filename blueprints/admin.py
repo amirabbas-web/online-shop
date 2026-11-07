@@ -30,4 +30,4 @@ def dashboard():
 
 @admin.route("/dashboard/products")
 def products():
-    return "this is products page"
+    return render_template("admin/product.html")
