@@ -4,5 +4,31 @@
     <title>admin product</title>
 {% endblock %}
 {% block body %}
-    ......
+
+    <table>
+        <tr>
+            <th>نام</th>
+            <th>قیمت</th>
+            <th>توضیحات</th>
+            <th>فعال</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ "Yes" if product.active == 1 else "No" }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <hr>
+    
+    <form action="#" method="post">
+        <input type="text" name="name" placeholder="نام محصول"><br>
+        <input type="number" name="price" placeholder="قیمت محصول"><br>
+        <textarea name="description" placeholder="توضیحات"></textarea><br>
+        <label for="check">فعال</label><input type="checkbox" name="active" id="check" value="1"><br>
+        <input type="submit">
+    </form>
 {% endblock %}
