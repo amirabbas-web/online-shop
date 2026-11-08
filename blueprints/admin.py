@@ -41,12 +41,12 @@ def products():
         price = request.form.get("price", None)
         active = request.form.get("active", None)
 
-        product = Product(name=name, description=description, price=price)
+        p = Product(name=name, description=description, price=price)
         if active == None:
-            product.active = 0
+            p.active = 0
         else:
-            product.active = 1
-        db.session.add(product)
+            p.active = 1
+        db.session.add(p)
         db.session.commit()
 
         return "done"

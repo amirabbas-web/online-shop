@@ -12,12 +12,12 @@
             <th>توضیحات</th>
             <th>فعال</th>
         </tr>
-        {% for product in products %}
+        {% for p in products %}
             <tr>
-                <td>{{ product.name }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ "Yes" if product.active == 1 else "No" }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.price }}</td>
+                <td>{{ p.description }}</td>
+                <td>{{ "Yes" if p.active == 1 else "No" }}</td>
             </tr>
         {% endfor %}
     </table>
