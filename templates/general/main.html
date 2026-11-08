@@ -4,5 +4,7 @@
     <title>فروشگاه اینترنتی امیرعباس</title>
 {% endblock %}
 {% block body %}
-    MAIN
+    {% for p in products %}
+        {{ p.name }}
+    {% endfor %}
 {% endblock %}
