@@ -6,7 +6,7 @@
 {% block body %}
     <h1>admin login</h1>
     <form action="#" method="POST">
-        <input type="hidden" name="csrf_token" value="">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="text" name="user" placeholder="username"><br>
         <input type="password" name="pass" placeholder="password"><br>
         <input type="submit">

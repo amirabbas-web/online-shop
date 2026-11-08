@@ -4,6 +4,7 @@ from extensions import *
 from blueprints.general import general
 from blueprints.admin import admin
 from blueprints.user import user
+from flask_wtf.csrf import CSRFProtect
 app = Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
@@ -13,6 +14,9 @@ app.register_blueprint(user)
 app.register_blueprint(admin)
 app.register_blueprint(general)
 db.init_app(app)
+
+csrf = CSRFProtect()
+csrf.init_app(app)
 
 with app.app_context():
     db.create_all()
