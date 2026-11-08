@@ -8,4 +8,4 @@ def home():
 
 @general.route("/about")
 def about():
-    return "about us"
+    return render_template("general/about.html")
