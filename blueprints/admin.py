@@ -71,7 +71,7 @@ def edit_product(id):
         else:
             product.active = 1
 
-        if file != None:
+        if file and file.filename:
             file.save(f'static/cover/{product.id}.jpg')
         db.session.commit()
 
