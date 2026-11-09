@@ -28,7 +28,7 @@ with app.app_context():
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.filter(User.id == user_id).filter()
+    return User.query.filter(User.id == user_id).first()
 
 if __name__ == "__main__":
     app.run(debug=DEBUG, port=PORT)
