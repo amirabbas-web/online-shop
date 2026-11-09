@@ -4,13 +4,14 @@
     <title>edit product</title>
 {% endblock %}
 {% block body %}
-    
-    <form action="#" method="post">
+    <img style="width: 100px;" src="/static/cover/{{ product.id }}.jpg">
+    <form action="#" method="post" enctype="multipart/form-data">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="text" value="{{ product.name }}" name="name" placeholder="نام محصول"><br>
         <input type="number" value="{{ product.price }}" name="price" placeholder="قیمت محصول"><br>
         <textarea name="description" placeholder="توضیحات">{{ product.description }}</textarea><br>
-        <label for="check">فعال</label><input type="checkbox" {{ "checked" if product.active == 1 }} name="active" id="check" value="1"><br>
+        <label for="file">کاور: </label><input type="file" name="cover" id="file"><br>
+        <label for="check">فعال: </label><input type="checkbox" {{ "checked" if product.active == 1 }} name="active" id="check" value="1"><br>
         <input type="submit">
     </form>
 {% endblock %}
