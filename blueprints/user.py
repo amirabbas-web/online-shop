@@ -36,7 +36,7 @@ def home():
                 return redirect(url_for('user_blueprint.dashboard'))
             else:
                 flash("نام کاربری یا رمز عبور اشتباه است")
-                return redirect(url_for("login_blueprint.home"))
+                return redirect(url_for("user_blueprint.home"))
 @user.route("/dashboard")
 def dashboard():
     return "user dashboard"
