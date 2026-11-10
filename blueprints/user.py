@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from models.User import *
 from flask_login import login_user
 from extensions import *
+from models.Cart import Cart
 from models.Product import Product
 from passlib.hash import sha256_crypt
 user = Blueprint("user_blueprint", __name__, url_prefix="/user")

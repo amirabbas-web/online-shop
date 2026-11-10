@@ -8,6 +8,7 @@ class User(db.Model, UserMixin):
     username = Column(String(50), nullable=False)
     password = Column(String(300), nullable=False)
     address = Column(String(150), nullable=False)
+    carts = db.relationship("Cart", backref="user")
     phone = Column(String(11), nullable=False)
     __table_args__ = (
         PrimaryKeyConstraint(id, name="pk_id"),
