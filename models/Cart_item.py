@@ -1,6 +1,6 @@
 from extensions import db
 from sqlalchemy.orm import backref
-from sqlalchemy import Column, String, Integer, PrimaryKeyConstraint, ForeignKeyConstraint
+from sqlalchemy import Column, Integer, PrimaryKeyConstraint, ForeignKeyConstraint
 class CartItem(db.Model):
     __tablename__ = "cart_items"
     id = Column(Integer, autoincrement=True)

@@ -11,3 +11,12 @@ class Cart(db.Model):
         PrimaryKeyConstraint(id, name="pk_id"),
         ForeignKeyConstraint(["user_id"], ["users.id"])
     )
+
+    def total_price(self):
+        total = 0
+        for item in self.cart_items:
+            t = item.price * item.quantity
+            total += t
+        return total
+
+    
