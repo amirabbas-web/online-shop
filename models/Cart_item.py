@@ -1,4 +1,5 @@
 from extensions import db
+from sqlalchemy.orm import backref
 from sqlalchemy import Column, String, Integer, PrimaryKeyConstraint, ForeignKeyConstraint
 class CartItem(db.Model):
     __tablename__ = "cart_items"
@@ -7,7 +8,7 @@ class CartItem(db.Model):
     cart_id = Column(Integer, nullable=False)
     quantity = Column(Integer)
     product = db.relationship("Product", backref="cart_items")
-    cart = db.relationship("Cart", backref="cart_items")
+    cart = db.relationship("Cart", backref=backref("cart_items", lazy="dynamic"))
     __table_args__ = (
         PrimaryKeyConstraint(id, name="pk_id"),
         ForeignKeyConstraint(["product_id"], ["products.id"]),

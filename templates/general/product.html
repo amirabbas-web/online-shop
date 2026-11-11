@@ -7,5 +7,9 @@
 <img style="width: 300px;" src="/static/cover/{{ p.id }}.jpg"><br>
     {{ p.id }}<br>
     {{ p.name }}<br>
-    {{ p.price }}
+    {{ p.price }}<br>
+    <form action="{{ url_for('user_blueprint.add_to_cart') }}" method="get">
+        <input type="hidden" name="id" value="{{ p.id }}">
+        <input type="submit" value="اضافه کردن به سبد خرید">
+    </form>
 {% endblock %}
