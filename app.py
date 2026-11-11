@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for, flash
 from config import *
 from extensions import *
 from blueprints.general import general
@@ -29,6 +29,12 @@ with app.app_context():
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.filter(User.id == user_id).first()
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    # do stuff
+    flash("لطفا وارد حساب کاربریتان شوید")
+    return redirect(url_for("user_blueprint.home"))
 
 if __name__ == "__main__":
     app.run(debug=DEBUG, port=PORT)
