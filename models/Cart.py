@@ -19,4 +19,14 @@ class Cart(db.Model):
             total += t
         return total
 
-    
+    def get_status_persion(self):
+        if self.status == "pending":
+            return "در انتظار پرداخت (سبد خرید)"
+        if self.status == "paid":
+            return "پرداخت شده"
+        if self.status == "send":
+            return "ارسال شده"
+        if self.status == "rejected":
+            return "رد شده"
+        if self.status == "received":
+            return "دریافت شده"

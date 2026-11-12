@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <title>admin dashboard | order</title>
+{% endblock %}
+{% block body %}
+    
+    <form action="#" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <select name="status">
+            <option value="pending" {% if cart.status == 'pending'%} selected {% endif %}>در انتظار پرداخت(سبد خرید)</option>
+            <option value="paid" {% if cart.status == 'paid'%} selected {% endif %}>پرداخت شده</option>
+            <option value="send" {% if cart.status == 'send'%} selected {% endif %}>ارسال شده</option>
+            <option value="rejected" {% if cart.status == 'rejected'%} selected {% endif %}>رد شده</option>
+            <option value="received" {% if cart.status == 'received'%} selected {% endif %}>دریافت شده</option>
+        </select>
+        <input type="submit" value="تغییر">
+    </form>
+    <div>
+    {% for item in cart.cart_items %}
+        {{ item.product.name }}<br>
+    {% endfor %}
+    </div>
+
+
+{% endblock %}

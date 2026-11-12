@@ -5,4 +5,9 @@
 {% endblock %}
 {% block body %}
     <a href="{{ url_for('admin_blueprint.products') }}">صفحه محصولات</a>
+    <div>
+    {% for cart in carts %}
+        {{ cart.user.phone }} {{ cart.get_status_persion() }} <a href="{{ url_for('admin_blueprint.order', id=cart.id) }}">اطلاعات بیشتر</a><br>
+    {% endfor %}
+    </div>
 {% endblock %}
