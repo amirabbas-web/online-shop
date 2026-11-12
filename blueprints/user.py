@@ -7,6 +7,8 @@ from models.Payment import Payment
 from models.Cart import Cart
 from models.Product import Product
 from passlib.hash import sha256_crypt
+from config import *
+import requests
 user = Blueprint("user_blueprint", __name__, url_prefix="/user")
 
 @user.route("/login", methods=["GET", "POST"])
@@ -88,3 +90,54 @@ def remove_from_cart():
         db.session.delete(cart_item)
     db.session.commit()
     return redirect(url_for("user_blueprint.cart"))
+
+@user.route("/payment")
+@login_required
+def payment():
+    cart_do = current_user.carts.filter(Cart.status == "pending").first()
+    r = requests.post(PAYMENT_FIRST_REQUEST_URL,
+        data={
+            'api':PAYMENT_MERCHANT,
+            'amount':cart_do.total_price(),
+            'callback':PAYMENT_CALLBACK
+        }
+    )
+    token = r.json()["result"]["token"]
+    url = r.json()["result"]["url"]
+    pay = Payment(price=cart_do.total_price(), token=token)
+    pay.cart = cart_do
+    db.session.add(pay)
+    db.session.commit()
+
+    return redirect(url)
+
+@user.route("/verify")
+@login_required
+def verify():
+    token = request.args.get("token")
+    pay = Payment.query.filter(Payment.token == token).first_or_404()
+    r = requests.post(PAYMENT_VERIFY_REQUEST_URL,
+        data={
+            'api':PAYMENT_MERCHANT,
+            'amount':pay.price,
+            'token':token
+        }
+    )
+    pay_status = bool(r.json()["success"])
+    if pay_status:
+        refid = r.json()["result"]["refid"]
+        transaction_id = r.json()["result"]["transaction_id"]
+        card_pan = r.json()["result"]["card_pan"]
+        pay.refid = refid
+        pay.transaction_id = transaction_id
+        pay.card_pan = card_pan
+        pay.status = "success"
+        pay.cart.status = "paid"
+        flash("پرداخت با موفقیت انجام شد!")
+    else:
+        flash("پرداخت با خطا مواجه شد!")
+        pay.status = "failed"
+    
+    db.session.commit()
+
+    return redirect(url_for('user_blueprint.dashboard'))

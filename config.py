@@ -4,3 +4,7 @@ DEBUG = True
 SECRET_KEY = "osdhgj}peiorwwesd{ihoh**fgerdf%5%mvwawnvjskf"
 ADMIN_USERNAME = "admin"
 ADMIN_PASSWORD = "12345"
+PAYMENT_MERCHANT = "sandbox"
+PAYMENT_CALLBACK = "http://localhost:9595/user/verify"
+PAYMENT_FIRST_REQUEST_URL = "https://sandbox.shepa.com/api/v1/token"
+PAYMENT_VERIFY_REQUEST_URL = "https://sandbox.shepa.com/api/v1/verify"

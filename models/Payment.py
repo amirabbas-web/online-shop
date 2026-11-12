@@ -6,6 +6,10 @@ class Payment(db.Model):
     cart_id = Column(Integer, nullable=False)
     price = Column(Integer)
     date_created = Column(String(15), default=get_corrent_time)
+    token = Column(String(40))
+    refid = Column(String(60))
+    transaction_id = Column(String(60))
+    card_pan = Column(String(60))
     status = Column(String(30), default="pending")
     cart = db.relationship("Cart", backref="payments")
     __table_args__ = (
