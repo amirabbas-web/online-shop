@@ -75,10 +75,7 @@ def cart():
     cart = current_user.carts.filter(Cart.status == "pending").first()
     return render_template("user/cart.html", cart=cart)
 
-@user.route("/dashboard")
-@login_required
-def dashboard():
-    return "user dashboard"
+
 @user.route("/remove-from-cart")
 @login_required
 def remove_from_cart():
@@ -141,3 +138,15 @@ def verify():
     db.session.commit()
 
     return redirect(url_for('user_blueprint.dashboard'))
+
+@user.route("/dashboard/")
+@login_required
+def dashboard():
+    return render_template("user/dashboard.html")
+
+
+@user.route("/dashboard/order/<id>")
+@login_required
+def order(id):
+    cart_do = current_user.carts.filter(Cart.id == id).first_or_404()
+    return render_template("user/order.html", cart=cart_do)
