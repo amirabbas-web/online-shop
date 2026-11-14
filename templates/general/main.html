@@ -1,10 +1,39 @@
 {% extends "base.html" %}
 
 {% block header %}
-    <title>فروشگاه اینترنتی امیرعباس</title>
+    <title>فروشگاه اینترنتی انلاین تک</title>
 {% endblock %}
 {% block body %}
-    {% for p in products %}
-        <a href="{{ url_for('general_blueprint.product', id=p.id, name=p.name) }}">{{ p.name }}</a>
-    {% endfor %}
+
+
+
+
+    <header>
+        <section>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="online teck">
+            <div>
+                <a href="#">صفحه اصلی</a>
+                <a href="#">محصولات جدید</a>
+                <a href="#">درباره ما</a>
+                <a href="#">محصولات پرفروش</a>
+            </div>
+        </section>
+    </header>
+    <section class="products">
+        {% for p in products %}
+            <section class="product-box">
+                <img src="{{ url_for('static', filename='cover/' + p.id|string + '.jpg') }}" alt="product image">
+                <h3>{{ p.name }}</h3>
+                <p>
+                    {{ p.description|truncate(50) }}
+                    <br>
+                    <a href="{{ url_for('general_blueprint.product', id=p.id, name=p.name) }}">توضیحات بیشتر</a>
+                </p>
+                <div style="float: left;">
+                    <a href="/user/add-to-cart?id={{ p.id }}">افزودن به سبد خرید</a>
+                </div>
+            </section>
+        {% endfor %}
+
+    </section>
 {% endblock %}

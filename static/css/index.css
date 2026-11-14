@@ -1,0 +1,103 @@
+@font-face {
+    font-family: Vazirmatn;
+    src:
+        url("../fonts/Vazirmatn[wght].woff2") format("woff2"),
+        url("../fonts/Vazirmatn[wght].ttf") format("truetype");
+    font-weight: 100 900;
+}
+:root {
+    --font-color: #525252;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    background-color: #fafafa;
+    color: var(--font-color);
+    font-family: Vazirmatn, sans-serif;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+}
+
+header img {
+    height: inherit;
+    float: left;
+    width: 16%;
+}
+
+header div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+}
+
+header section {
+    width: 100%;
+    max-width: 800px;
+    display: block;
+    height: 40px;
+    margin: 30px auto auto;
+    padding: 10px 20px;
+
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+header a {
+    font-size: 20px;
+    color: var(--font-color);
+    text-decoration: none;
+    font-weight: 900;
+    margin: 0 10px;
+    padding: 5px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+.product-box {
+    max-width: 250px;
+    margin: 10px;
+    padding-bottom: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.products {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product-box > img {
+    width: 100%;
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+}
+
+.product-box > h3 {
+    margin: 5px;
+}
+
+.product-box > div > a {
+    padding: 5px;
+    font-size: 12px;
+    margin: 10px;
+    margin-bottom: 10px;
+    color: var(--font-color);
+    text-decoration: none;
+    background: rgba(24, 255, 0, 0.32);
+    border: 2px solid rgba(14, 255, 0, 0.6);
+    border-radius: 9px;
+}
+
+.product-box p {
+    font-size: 12px;
+    margin: 0;
+}
