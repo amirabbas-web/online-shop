@@ -73,13 +73,21 @@ header a:hover {
     text-decoration: underline;
 }
 
+.product-box:hover .add-to-cart-btn {
+    opacity: 1;
+}
+
 .product-box {
+    position: relative;
+}
+
+.product-box section {
     max-width: 250px;
     margin: 10px;
     padding-bottom: 52px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    position: relative;
+    height: 84%;
 }
 
 .products {
@@ -91,35 +99,41 @@ header a:hover {
     justify-content: center;
     align-items: stretch;
 }
-.product-box > img {
+.product-box section > img {
     width: 100%;
     border-top-right-radius: inherit;
     border-top-left-radius: inherit;
 }
 
-.product-box > h3 {
+.product-box section a {
+    color: var(--font-color);
+    text-decoration: none;
+}
+
+.product-box section > h3 {
     margin: 5px;
 }
 
-.product-box > a {
+.add-to-cart-btn {
+    opacity: 0;
     padding: 5px;
     font-size: 12px;
-    color: var(--font-color);
+    color: #fafafa;
     text-decoration: none;
-    background: rgba(24, 255, 0, 0.2);
+    background: rgba(14, 88, 0, 1);
     border: 2px solid rgba(14, 255, 0, 0.6);
     border-radius: 9px;
     position: absolute;
-    left: 10px;
-    bottom: 10px;
+    left: 20px;
+    top: 20px;
     font-weight: 300;
 }
 
-.product-box > a:hover {
-    background: rgba(14, 255, 0, 0.08);
+.add-to-cart-btn:hover {
+    background: rgba(0, 0, 0, 0.5);
 }
 
-.product-box p {
+.product-box section p {
     font-size: 12px;
     margin: 0 10px;
     font-weight: 300;

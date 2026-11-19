@@ -1,16 +1,21 @@
-<section class="product-box">
-    <img src="{{ url_for('static', filename='cover/' + p.id|string + '.jpg') }}" alt="product image">
+<div class="product-box">
+    <a style="all: unset; cursor: pointer;" href="{{ url_for('general_blueprint.product', id=p.id, name=p.name) }}">
+        <section>
+            <img src="{{ url_for('static', filename='cover/' + p.id|string + '.jpg') }}" alt="product image">
 
-    <span class="tag red"><img src="{{ url_for('static', filename='theme-image/delivery.png') }}" alt="موتور"> ارسال
-        رایگان</span>
-    <span class="tag blue"><img src="{{ url_for('static', filename='theme-image/done.png') }}" alt="تیک"> ضمانت
-        اصالت</span>
-    <h3>{{ p.name }}</h3>
-    <p>
-        {{ p.description|truncate(50) }}
-        <br>
-        <a href="{{ url_for('general_blueprint.product', id=p.id, name=p.name) }}">توضیحات بیشتر</a>
-    </p>
-    <a href="/user/add-to-cart?id={{ p.id }}">افزودن به <img
-            src="{{ url_for('static', filename='theme-image/cart.png') }}" alt="سبد خرید"></a>
-</section>
+            <span class="tag red"><img src="{{ url_for('static', filename='theme-image/delivery.png') }}" alt="موتور">
+                ارسال
+                رایگان</span>
+            <span class="tag blue"><img src="{{ url_for('static', filename='theme-image/done.png') }}" alt="تیک"> ضمانت
+                اصالت</span>
+            <h3>{{ p.name }}</h3>
+            <p>
+                {{ p.description|truncate(100) }}
+            </p>
+        </section>
+
+    </a>
+    <a class="add-to-cart-btn" href="/user/add-to-cart?id={{ p.id }}">افزودن به 
+    <img src="{{ url_for('static', filename='theme-image/cart.png') }}" alt="سبد خرید"></a>
+
+</div>
