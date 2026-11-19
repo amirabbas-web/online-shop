@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block header %}
-    <title>فروشگاه اینترنتی انلاین تک</title>
+    <title>فروشگاه اینترنتی آنلاین تک</title>
 {% endblock %}
 {% block body %}
 
@@ -9,29 +9,11 @@
 
 
     <header>
-        <section>
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="online teck">
-            <div>
-                <a href="#">صفحه اصلی</a>
-                <a href="#">درباره ما</a>
-            </div>
-        </section>
+        {% include "part/header.html" %}
     </header>
     <section class="products">
         {% for p in products %}
-            <section class="product-box">
-                <img src="{{ url_for('static', filename='cover/' + p.id|string + '.jpg') }}" alt="product image">
-
-                <span class="tag red"><img src="{{ url_for('static', filename='theme-image/delivery.png') }}" alt="موتور"> ارسال رایگان</span>
-                <span class="tag blue"><img src="{{ url_for('static', filename='theme-image/done.png') }}" alt="تیک"> ضمانت اصالت</span>
-                <h3>{{ p.name }}</h3>
-                <p>
-                    {{ p.description|truncate(50) }}
-                    <br>
-                    <a href="{{ url_for('general_blueprint.product', id=p.id, name=p.name) }}">توضیحات بیشتر</a>
-                </p>
-                <a href="/user/add-to-cart?id={{ p.id }}">افزودن به <img src="{{ url_for('static', filename='theme-image/cart.png') }}" alt="سبد خرید"></a>
-            </section>
+            {% include "part/product.html" %}
         {% endfor %}
 
     </section>

@@ -1,11 +1,15 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from models.Product import Product
 general = Blueprint("general_blueprint", __name__)
 
 @general.route("/")
 def home():
-    products = Product.query.filter(Product.active == 1).all()
-    return render_template("general/main.html", products=products)
+    products = Product.query.filter(Product.active == 1)
+    search = request.args.get('search', None)
+    if search != None:
+        products = products.filter(Product.name.like(f'%{search}%'))
+    products = products.all()
+    return render_template("general/main.html", products=products, search=search)
 
 @general.route("/product/<int:id>/<string:name>")
 def product(id, name):

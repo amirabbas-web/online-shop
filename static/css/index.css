@@ -10,7 +10,7 @@
 }
 
 :root {
-    --font-color: #525252;
+    --font-color: #5f5f5f;
 }
 
 body {
@@ -38,6 +38,14 @@ header div{
     justify-content: center;
     align-items: center;
     float: right;
+}
+
+header div input {
+    font-size: 16px;
+    font-family: Vazirmatn;
+    font-weight: 300;
+    border-radius: 5px;
+    border: 2px solid #00000030;
 }
 
 header section {
