@@ -5,6 +5,10 @@
         url("../fonts/Vazirmatn[wght].ttf") format("truetype");
     font-weight: 100 900;
 }
+* {
+    transition: all 200ms ease-in;
+}
+
 :root {
     --font-color: #525252;
 }
@@ -64,16 +68,20 @@ header a:hover {
 .product-box {
     max-width: 250px;
     margin: 10px;
-    padding-bottom: 14px;
+    padding-bottom: 52px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    position: relative;
 }
 
 .products {
+    margin: auto;
+    max-width: 847px;
     margin-top: 20px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
 }
 .product-box > img {
     width: 100%;
@@ -85,19 +93,59 @@ header a:hover {
     margin: 5px;
 }
 
-.product-box > div > a {
+.product-box > a {
     padding: 5px;
     font-size: 12px;
-    margin: 10px;
-    margin-bottom: 10px;
     color: var(--font-color);
     text-decoration: none;
-    background: rgba(24, 255, 0, 0.32);
+    background: rgba(24, 255, 0, 0.2);
     border: 2px solid rgba(14, 255, 0, 0.6);
     border-radius: 9px;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    font-weight: 300;
+}
+
+.product-box > a:hover {
+    background: rgba(14, 255, 0, 0.08);
 }
 
 .product-box p {
     font-size: 12px;
-    margin: 0;
+    margin: 0 10px;
+    font-weight: 300;
+}
+
+a > img {
+    width: 20px;
+    margin-right: 5px;
+}
+a {
+    display: flex;
+    align-items: center;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    border-radius: 20px;
+    padding: 2px 5px;
+    font-weight: 200;
+}
+
+.tag img {
+    width: 20px;
+    margin-left: 5px;
+}
+
+.tag.red {
+    border: 1px solid #ff000061;
+    background: rgba(255, 0, 0, 0.05);
+}
+
+.tag.blue {
+    border: 1px solid #0000ff61;
+    background: rgba(0, 0, 255, 0.05);
 }

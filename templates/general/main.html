@@ -13,9 +13,7 @@
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="online teck">
             <div>
                 <a href="#">صفحه اصلی</a>
-                <a href="#">محصولات جدید</a>
                 <a href="#">درباره ما</a>
-                <a href="#">محصولات پرفروش</a>
             </div>
         </section>
     </header>
@@ -23,15 +21,16 @@
         {% for p in products %}
             <section class="product-box">
                 <img src="{{ url_for('static', filename='cover/' + p.id|string + '.jpg') }}" alt="product image">
+
+                <span class="tag red"><img src="{{ url_for('static', filename='theme-image/delivery.png') }}" alt="موتور"> ارسال رایگان</span>
+                <span class="tag blue"><img src="{{ url_for('static', filename='theme-image/done.png') }}" alt="تیک"> ضمانت اصالت</span>
                 <h3>{{ p.name }}</h3>
                 <p>
                     {{ p.description|truncate(50) }}
                     <br>
                     <a href="{{ url_for('general_blueprint.product', id=p.id, name=p.name) }}">توضیحات بیشتر</a>
                 </p>
-                <div style="float: left;">
-                    <a href="/user/add-to-cart?id={{ p.id }}">افزودن به سبد خرید</a>
-                </div>
+                <a href="/user/add-to-cart?id={{ p.id }}">افزودن به <img src="{{ url_for('static', filename='theme-image/cart.png') }}" alt="سبد خرید"></a>
             </section>
         {% endfor %}
 
