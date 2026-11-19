@@ -90,6 +90,14 @@ header a:hover {
     height: 84%;
 }
 
+.price {
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
 .products {
     margin: auto;
     max-width: 847px;
